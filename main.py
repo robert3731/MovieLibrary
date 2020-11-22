@@ -34,10 +34,20 @@ def get_movies():  # Filters library and displays series only
 
 def get_series():  # Filters library and displays series only
     series = filter(lambda s: isinstance(s, Series), library)
-    by_name = sorted(series, key=lambda m: m.title) # Return titles sorted by name
+    by_name = sorted(series, key=lambda m: m.title)  # Return titles sorted by name
     print('Series:')
     for name in by_name:
         print('- {}'.format(name.title))
+
+
+def search():  # Allows to search the exact title in library
+    name = input('Enter movie title:')
+    for movie in library:
+        if movie.title == name:
+            print('Title found.')
+            return
+    else:
+        print('Sorry, title not found.')
 
 
 movie1 = Movie('Pulp Fiction', '1994', 'Crime, Drama', 0)
@@ -51,3 +61,4 @@ library = (movie1, movie2, movie3, series1, series2, series3)
 
 get_movies()
 get_series()
+search()
